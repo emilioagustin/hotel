@@ -1,0 +1,129 @@
+.regularFont() {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.semiBoldFont() {
+    .regularFont;
+    font-weight: 600;
+}
+
+.boldFont() {
+    .regularFont;
+    font-weight: bold;
+}
+
+.radius(@size) {
+    -webkit-border-radius: @size;
+    -moz-border-radius: @size;
+    border-radius: @size;
+}
+
+.horizontalCenter(@elementWidth: 0px) {
+    left: calc(50% - @elementWidth);
+    position: absolute;
+}
+
+.verticalCenter(@elementHeight: 0px) {
+    top: calc(50% - @elementHeight);
+    left: 0%;
+    position: absolute;
+}
+
+.bothCenter(@elementWidth: 0px, @elementHeight: 0px) {
+    top: calc(50% - @elementHeight);
+    left: calc(50% - @elementWidth);
+    position: absolute;
+}
+
+.verticalTextCenter(@elementHeight: 0px) {
+    .verticalCenter(@elementHeight);
+    width: 100%;
+    text-align: center;
+}
+
+.textCenter() {
+    text-align: center;
+}
+
+.opacity(@opacity) {
+    @mfopacity: @opacity*100;
+    @fopacity: "alpha(opacity=@{mfopacity})";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{mfopacity})";
+    filter:~"@{fopacity}";
+    -webkit-opacity: @opacity;
+    -moz-opacity: @opacity;
+    opacity: @opacity;
+}
+
+.show() {
+    .opacity(1);
+}
+
+.hide() {
+    .opacity(0);
+}
+
+.visible() {
+    display: block;
+}
+
+.invisible() {
+    display: none;
+}
+
+.set_visible() {
+    visibility: visible;
+}
+
+.set_invisible() {
+    visibility: hidden;
+}
+
+.fontSize(@sizeValue) {
+    @remValue: @sizeValue;
+    @pxValue: (@sizeValue * 10);
+    font-size:~"@{pxValue}px";
+    font-size:~"@{remValue}rem";
+}
+
+.color(@color) {
+    color: @color;
+}
+
+.textColor() {
+    color: @main-text-color;
+}
+
+.background(@color) {
+    background: @color;
+}
+
+.uppercase() {
+    text-transform: uppercase;
+}
+
+.animation(@animationsSet...) {
+    -webkit-animation:~'@{animationsSet}';
+    -moz-animation:~'@{animationsSet}';
+    -o-animation:~'@{animationsSet}';
+    animation:~'@{animationsSet}';
+}
+
+.keyframes(@name, @rules) {
+    @-webkit-keyframes @name {
+        @rules();
+    }
+    @-moz-keyframes @name {
+        @rules();
+    }
+    @-ms-keyframes @name {
+        @rules();
+    }
+    @-o-keyframes @name {
+        @rules();
+    }
+    @keyframes @name {
+        @rules();
+    }
+}

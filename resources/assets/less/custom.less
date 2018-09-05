@@ -1,0 +1,84 @@
+.custom__checkbox {
+    display: block;
+    position: relative;
+    margin: 0px 12px 12px 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 13px;
+        width: 13px;
+        background-color: #bbbbbb;
+        border-radius: 3px;
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+    }
+    &:hover input~.checkmark {
+        background-color: @blue;
+    }
+    input:checked~.checkmark {
+        background-color: @blue;
+    }
+}
+
+.custom__dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px;
+    select {
+        background-color: @blue;
+        color: @white;
+        width: 196px;
+        padding: 12px;
+        padding-right: 2.5em;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        text-indent: 0.01px;
+        text-overflow: '';
+        font-weight: bold;
+        -webkit-appearance: button;
+        -moz-appearance: button;
+    }
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+    }
+    &::after {
+        content: "\25BC";
+        height: 1em;
+        font-size: .625em;
+        line-height: 1;
+        right: 1.2em;
+        top: 50%;
+        margin-top: -.5em;
+        color: @white;
+    }
+    &::before {
+        width: 2em;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 3px 3px 0;
+        color: @white;
+    }
+    option {
+        font-size: 11pt;
+    }
+}
